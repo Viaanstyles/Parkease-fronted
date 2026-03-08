@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkEase Daily Reports</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">ParkEase</div>
+        <div class="subtitle">DAILY REPORTS</div>
+        <div class="buttons">
+            <button>Download PDF</button>
+            <button>Export CSV</button>
+        </div>
+    </div>
+
+    <!-- REVENUE OVERVIEW -->
+    <div class="revenue-section">
+        <div class="date-selector">
+            <button>←</button>
+            <span>March 8, 2026</span>
+            <button>→</button>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <h3>Parking Revenue</h3>
+                <p>UGX 450,000</p>
+                <p>+5%</p>
+            </div>
+            <div class="card">
+                <h3>Tyre Clinic</h3>
+                <p>UGX 120,000</p>
+                <p>-2%</p>
+            </div>
+            <div class="card">
+                <h3>Battery Hire</h3>
+                <p>UGX 80,000</p>
+                <p>+3%</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGNED-OUT VEHICLES TABLE -->
+    <div class="table-section">
+        <input type="text" placeholder="Search by Receipt or Plate">
+        <table>
+            <thead>
+                <tr>
+                    <th>Receipt #</th>
+                    <th>Plate #</th>
+                    <th>In-Time</th>
+                    <th>Out-Time</th>
+                    <th>Duration</th>
+                    <th>Fee (UGX)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PK1001</td>
+                    <td>UBD 123A</td>
+                    <td>08:00</td>
+                    <td>12:00</td>
+                    <td>4 hrs</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>PK1002</td>
+                    <td>UAW 552B</td>
+                    <td>09:00</td>
+                    <td>11:30</td>
+                    <td>2.5 hrs</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>PK1003</td>
+                    <td>UBK 884C</td>
+                    <td>07:30</td>
+                    <td>10:00</td>
+                    <td>2.5 hrs</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>PK1004</td>
+                    <td>UAA 221D</td>
+                    <td>08:15</td>
+                    <td>11:15</td>
+                    <td>3 hrs</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td>PK1005</td>
+                    <td>UAB 331E</td>
+                    <td>09:45</td>
+                    <td>12:45</td>
+                    <td>3 hrs</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td>PK1006</td>
+                    <td>UBD 555F</td>
+                    <td>10:00</td>
+                    <td>13:00</td>
+                    <td>3 hrs</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td>PK1007</td>
+                    <td>UAC 444G</td>
+                    <td>08:30</td>
+                    <td>12:30</td>
+                    <td>4 hrs</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>PK1008</td>
+                    <td>UAD 666H</td>
+                    <td>07:45</td>
+                    <td>10:45</td>
+                    <td>3 hrs</td>
+                    <td>6000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button>Previous</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>Next</button>
+        </div>
+
+        <div class="grand-total">
+            Daily Grand Total: UGX 54,000
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        ADMIN CONTROL PANEL &copy; 2026
+    </footer>
+
+</body>
+
+</html>

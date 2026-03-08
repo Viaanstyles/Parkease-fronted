@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ParkEase Sign-Out</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <!-- SEARCH BAR -->
+
+    <div class="topbar">
+
+        <input type="text" id="searchPlate" placeholder="Search Receipt by ID or Plate Number">
+
+        <button onclick="searchVehicle()">Search</button>
+
+    </div>
+
+
+    <div class="container">
+
+        <!-- LEFT PANEL -->
+
+        <div class="left-panel">
+
+            <div class="card">
+
+                <h3>Vehicle & Arrival Details</h3>
+
+                <p>Driver Name: <span id="driver">-</span></p>
+
+                <p>Vehicle Type: <span id="vehicleType">-</span></p>
+
+                <p>Arrival Time: <span id="arrival">-</span></p>
+
+                <p>Duration: <span id="duration">-</span></p>
+
+                <p class="fee">Parking Fee: UGX <span id="fee">0</span></p>
+
+                <span class="badge">PENDING SIGN-OUT</span>
+
+            </div>
+
+            <h3>Receiver Information</h3>
+
+            <input type="text" id="receiverName" placeholder="Receiver Full Name">
+
+            <input type="text" id="receiverPhone" placeholder="Phone Number">
+
+            <input type="text" id="receiverNIN" placeholder="NIN Number">
+
+            <select id="receiverGender">
+                <option>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+
+            <br><br>
+
+            <button class="primary" onclick="confirmPayment()">Confirm Payment & Sign-out</button>
+
+            <button class="cancel">Cancel</button>
+
+        </div>
+
+
+        <!-- RIGHT PANEL -->
+
+        <div class="right-panel">
+
+            <button class="print" onclick="window.print()">Print</button>
+
+            <h3>Receipt Preview</h3>
+
+            <div class="receipt">
+
+                <p>Receipt No: <span id="rno">-</span></p>
+
+                <p>Date: <span id="rdate">-</span></p>
+
+                <p>Plate No: <span id="rplate">-</span></p>
+
+                <p>Category: <span id="rtype">-</span></p>
+
+                <p>Check-in: <span id="rcheckin">-</span></p>
+
+                <p>Duration: <span id="rduration">-</span></p>
+
+                <p>Total (UGX): <span id="rtotal">-</span></p>
+
+                <p>Receiver: <span id="rreceiver">-</span></p>
+
+                <p>NIN: <span id="rnin">-</span></p>
+
+                <div class="qr">
+
+                    SCAN TO VERIFY
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* SEARCH MOCK DATA */
+
+        function searchVehicle() {
+
+            let plate = document.getElementById("searchPlate").value;
+
+            let vehicleType = "Personal Car";
+            let duration = 3;
+            let rate = 2000;
+
+            let fee = duration * rate;
+
+            /* Populate details */
+
+            document.getElementById("driver").innerText = "John Doe";
+            document.getElementById("vehicleType").innerText = vehicleType;
+            document.getElementById("arrival").innerText = "08:30 AM";
+            document.getElementById("duration").innerText = duration + " hrs";
+            document.getElementById("fee").innerText = fee;
+
+            /* Prepare receipt */
+
+            document.getElementById("rplate").innerText = plate;
+            document.getElementById("rtype").innerText = vehicleType;
+            document.getElementById("rcheckin").innerText = "08:30 AM";
+            document.getElementById("rduration").innerText = duration + " hrs";
+            document.getElementById("rtotal").innerText = fee;
+
+        }
+
+        /* CONFIRM PAYMENT */
+
+        function confirmPayment() {
+
+            let name = document.getElementById("receiverName").value;
+            let nin = document.getElementById("receiverNIN").value;
+
+            document.getElementById("rreceiver").innerText = name;
+            document.getElementById("rnin").innerText = nin;
+
+            document.getElementById("rno").innerText = "PK" + Math.floor(Math.random() * 10000);
+
+            let today = new Date();
+            document.getElementById("rdate").innerText = today.toLocaleDateString();
+
+            alert("Payment Confirmed and Vehicle Signed Out");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

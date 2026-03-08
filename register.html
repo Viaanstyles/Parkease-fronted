@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkEase Vehicle Registration</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <div class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Registration</a>
+            <a href="#">History</a>
+        </div>
+
+        <div class="profile">
+            👤 Admin User
+        </div>
+
+    </div>
+
+    <!-- MAIN FORM -->
+
+    <div class="container">
+
+        <h2>Driver Information</h2>
+
+        <div class="input-group">
+            <label>Driver Name</label>
+            <input type="text" placeholder="Enter driver's full name">
+        </div>
+
+        <div class="input-group">
+            <label>Phone Number</label>
+            <input type="text" placeholder="+256 7XX XXX XXX">
+        </div>
+
+
+        <h2>Vehicle Information</h2>
+
+        <div class="input-group">
+            <label>Vehicle Type</label>
+
+            <select id="vehicleType" onchange="checkVehicleType()">
+                <option value="">Select vehicle</option>
+                <option>Truck</option>
+                <option>Personal Car</option>
+                <option>Taxi</option>
+                <option>Coaster</option>
+                <option>Boda-boda</option>
+            </select>
+
+        </div>
+
+        <div class="input-group">
+            <label>Number Plate</label>
+            <input type="text" placeholder="# UBD 123A">
+        </div>
+
+        <div class="input-group">
+            <label>Vehicle Model & Color</label>
+            <input type="text" placeholder="e.g Toyota Corolla - White">
+        </div>
+
+        <div class="input-group">
+            <label>NIN Number</label>
+            <input type="text" id="ninField" placeholder="Enter NIN">
+        </div>
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+            <button class="primary">Register & Print Receipt</button>
+
+            <button class="secondary" onclick="clearForm()">Clear Form</button>
+
+        </div>
+
+    </div>
+
+    <!-- QUICK TIPS -->
+
+    <div class="quick-tips">
+
+        <h4>Quick Tips</h4>
+
+        <p>Ctrl + R → Register Vehicle</p>
+        <p>Ctrl + P → Print Receipt</p>
+        <p>Ctrl + C → Clear Form</p>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        System Version: 1.0 | Session Started: <span id="sessionTime"></span>
+
+    </footer>
+
+    <script>
+
+        /* Highlight NIN for boda-boda */
+
+        function checkVehicleType() {
+
+            let vehicle = document.getElementById("vehicleType").value;
+            let nin = document.getElementById("ninField");
+
+            if (vehicle === "Boda-boda") {
+                nin.classList.add("highlight");
+            }
+            else {
+                nin.classList.remove("highlight");
+            }
+
+        }
+
+        /* Clear Form */
+
+        function clearForm() {
+            document.querySelectorAll("input").forEach(input => input.value = "");
+            document.getElementById("vehicleType").value = "";
+        }
+
+        /* Show session time */
+
+        let now = new Date();
+        document.getElementById("sessionTime").innerText = now.toLocaleTimeString();
+
+    </script>
+
+</body>
+
+</html>
