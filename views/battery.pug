@@ -1,0 +1,49 @@
+extends layout
+
+block content 
+  .container.min-vh-100.d-flex.justify-content-center.align-items-center(style="background:linear-gradient(135deg,#eef2f7,#f8f9fb);")
+    
+    .card.shadow-lg.border-0.rounded-4(style='width: 100%; max-width: 460px;')
+      .card-body.p-5
+
+        // HEADER
+        h2.text-center.fw-bold.mb-2(style="color:#333;") Batteries
+        p.text-center.text-muted.mb-4(style="font-size:14px;") Please enter the battery details
+
+        // FORM
+        form(method='post' action='/registerBattery' enctype='multipart/form-data')
+
+          // Battery Type
+          .mb-3
+            label.form-label.fw-semibold Battery Type
+            select.form-select.rounded-3(name="batteryType" style="padding:10px;")
+              option(value="") Select battery type
+              option(value="Absorbent Glass Matt") Absorbent Glass Matt
+              option(value="Flooded") Flooded
+              option(value="Lithium-ion") Lithium-ion
+
+          // Battery Size
+          .mb-3
+            label.form-label.fw-semibold Battery Size
+            select.form-select.rounded-3(name="batterySize" style="padding:10px;")
+              option(value="") Select battery size
+              option(value="12V") 12V (for bodabodas, small cars)
+              option(value="24V") 24V (for big trucks)
+
+          // Image Upload
+          .mb-3
+            label.form-label.fw-semibold Battery Image
+            input.form-control.rounded-3(type='file' name='batteryImage' style="padding:10px;")
+
+          // Price
+          .mb-4
+            label.form-label.fw-semibold Price (UGX)
+            input.form-control.rounded-3(type='number' name='amountPaid' placeholder='e.g. 150000' style="padding:10px;")
+
+          // BUTTON
+          button.btn.w-100.py-2.fw-bold.rounded-3(
+            type='submit'
+            style="background:#007BFF; border:none;"
+          ) Add Battery
+
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')

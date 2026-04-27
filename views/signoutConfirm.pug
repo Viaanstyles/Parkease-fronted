@@ -1,0 +1,40 @@
+extends layout
+block content
+    .container.min-vh-100.d-flex.justify-content-center.align-items-center
+        .card.shadow-lg.border-0.rounded-4(style='width: 100%; max-width: 500px;')
+            .card-body.p-5
+                h4.mb-0 Signout 
+            .card-body.p-4 
+                .bg-light.p-3.rounded-3.mb-4.border 
+                    .d-flex.justify-content-between.mb-2    
+                        span.fw-bold Vehicle: 
+                        span #{vehicle.vehicleType} (#{vehicle.numberPlate})
+                    .d-flex.justify-content-between.mb-2 
+                        span.fw-bold Arrival Time: 
+                        span= new Date(vehicle.arrivalTime).toLocaleString()
+                    .d-flex.justify-content-between.mt-3.pt-3.border-top 
+                        span.fw-bold.text-success.fs-5 Amount Due: 
+                        span.fw-bold.text-success.fs-5 UGX #{fee.toLocaleString()}
+                h2.text-center.fw-bold.mb-4 Confirm Signout
+                form(method='post' action='/signout/confirm')
+                    input(type="hidden" name="receiptNumber" value=vehicle.receiptNumber)
+                    input(type="hidden" name="vehicleId" value=vehicle._id)
+                    input(type="hidden" name="amountPaid" value=fee)
+                    .row.mb-3
+                        .col-md-6.mb-3.mb-md-0
+                            label.form-label.fw-semibold(for='receiverName') Receiver Name
+                            input#receiverName.form-control(type='text' placeholder='John' name='receiverName')
+                    .mb-3
+                        label.form-label.fw-semibold(for='phone') Phone Number
+                        input#phone.form-control(type='tel' placeholder='+256 700 000000' name='phoneNumber')
+                    .mb-3
+                        label.form-label.fw-semibold(for='gender') Gender
+                        select#gender(name="gender")
+                            option(value="") Select your gender
+                            option(value="Male") Male 
+                            option(value="Female") Female   
+                    .mb-4
+                        label.form-label.fw-semibold(for='ninNumber') NIN Number
+                        input#ninNumber.form-control(type='text' placeholder='••••••••' name='ninNumber')
+                    button.btn.btn-primary.w-100.py-2.fw-bold.rounded-3(type='submit') Confirm Signout
+            script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')

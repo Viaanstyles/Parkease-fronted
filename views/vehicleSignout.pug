@@ -1,0 +1,23 @@
+extends layout 
+block content 
+    .dashboard
+    .form-section
+        h2 Car Sign Out
+        form#signOutForm
+        label Receiver Name
+        input#receiverName(type='text')
+        label Role
+        input#dashboardRole(type='text')
+        label Receipt Number
+        input#receiptNumber(type='text')
+        label Phone Number
+        input#phoneNumber(type='text')
+        label Gender
+        select#gender
+            option select
+            option Male
+            option Female
+        label NIN Number
+        input#ninNumber(type='text')
+        button.btn-submit(type='submit') Signout Vehicle
+        script(src='javaScript/signOut.js')

@@ -1,0 +1,70 @@
+extends layout
+
+block content 
+  .container(style="padding:30px; background:#f4f6f9; min-height:100vh; font-family:Arial, sans-serif;")
+
+    .card(style="max-width:800px; margin:auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 12px rgba(87, 72, 72, 0.1);")
+
+      // HEADER
+      h3(style="margin-bottom:5px; color:#0f0f0f;") Vehicle Registration
+      p(style="margin-bottom:25px; color:#777;") Register vehicles on arrival
+
+      form#registerVehicle(method='post' action='/registerVehicle' enctype='multipart/form-data')
+
+        // DRIVER DETAILS
+        h5(style="margin-bottom:15px; color:#007BFF;") Driver Details
+
+        div(style="display:flex; gap:15px; margin-bottom:20px; flex-wrap:wrap;")
+          div(style="flex:1; min-width:200px;")
+            label(for='driverName' style="display:block; margin-bottom:5px; font-weight:bold;") Driver Name
+            input#driverName(type='text' name='driverName' style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;")
+
+          div(style="flex:1; min-width:200px;")
+            label(for='phoneNumber' style="display:block; margin-bottom:5px; font-weight:bold;") Phone Number
+            input#phoneNumber(type='tel' name='phoneNumber' style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;")
+
+        // VEHICLE DETAILS
+        h5(style="margin-bottom:15px; color:#007BFF;") Vehicle Details
+
+        div(style="display:flex; gap:15px; margin-bottom:20px; flex-wrap:wrap;")
+          div(style="flex:1; min-width:200px;")
+            label(for='vehicleType' style="display:block; margin-bottom:5px; font-weight:bold;") Vehicle Type
+            select#vehicleType(name='vehicleType' style="width:100%; padding:10px; border:1px solid #eca6a6; border-radius:6px;")
+              option(value='' selected disabled) Select type...
+              option(value='Truck') Truck
+              option(value='Personal Car') Personal Car
+              option(value='Taxi') Taxi
+              option(value='Coaster') Coaster
+              option(value='Boda-boda') Boda-boda
+
+          div(style="flex:1; min-width:200px;")
+            label(for='numberPlate' style="display:block; margin-bottom:5px; font-weight:bold;") Number Plate
+            input#numberPlate(type='text' name='numberPlate' style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;")
+
+        div(style="display:flex; gap:15px; margin-bottom:20px; flex-wrap:wrap;")
+          div(style="flex:1; min-width:200px;")
+            label(for='vehicleModel' style="display:block; margin-bottom:5px; font-weight:bold;") Vehicle Model
+            input#vehicleModel(type='text' name='vehicleModel' style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;")
+
+            label(for='vehicleImage' style="display:block; margin:10px 0 5px; font-weight:bold;") Vehicle Image
+            input#vehicleImage(type='file' name='vehicleImage' style="width:100%; padding:8px;")
+
+          div(style="flex:1; min-width:200px;")
+            label(for='vehicleColor' style="display:block; margin-bottom:5px; font-weight:bold;") Vehicle Color
+            input#vehicleColor(type='text' name='vehicleColor' style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;")
+
+        // NIN
+        #ninContainer(style="margin-bottom:20px;")
+          label(for='ninNumber' style="display:block; margin-bottom:5px; font-weight:bold; color:#dc3545;")
+            | NIN Number (Required for Boda-bodas)
+          input#ninNumber(type='text' name='ninNumber' style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px;")
+
+        div#resultMessage
+
+        // BUTTON
+        button(
+          type='submit'
+          style="width:100%; padding:12px; background:#007BFF; color:white; border:none; border-radius:6px; font-weight:bold; cursor:pointer;"
+        ) Register Vehicle
+
+  script(src="/VehicleRegisterValidation.js")

@@ -1,0 +1,86 @@
+extends layout
+block content
+  div.container.py-5
+    
+    // Header & Date Filter
+    div.d-flex.justify-content-between.align-items-center.mb-4.border-bottom.pb-3
+      div
+        h2.fw-bold.mb-0 System Admin Dashboard
+        p.text-muted.mb-0 Daily Revenue and Vehicle Sign-Out Report
+      
+      // Date Picker Form
+      form.d-flex.align-items-center(action="/adminDashboard" method="GET")
+        label.me-2.fw-semibold(for="dateFilter") Filter by Day:
+        input.form-control.me-2#dateFilter(type="date" name="date" value=selectedDate)
+        button.btn.btn-primary(type="submit") 
+          i.fa-solid.fa-filter.me-1
+          | Filter
+
+    // Revenue Section
+    div.row.g-4.mb-5
+      // Parking Revenue Card
+      div.col-md-4
+        div.card.shadow-sm.border-0.bg-primary.text-white.rounded-4.h-100
+          div.card-body.p-4
+            div.d-flex.justify-content-between.align-items-center.mb-3
+              h6.card-title.fw-bold.text-white-50.mb-0 PARKING REVENUE
+              i.fa-solid.fa-square-parking.fs-3.text-white-50
+            h3.fw-bold UGX #{parkingRevenue.toLocaleString()}
+            p.small.mb-0 Total parking fees collected today
+      
+      // Tyre Clinic Revenue Card
+      div.col-md-4
+        div.card.shadow-sm.border-0.bg-success.text-white.rounded-4.h-100
+          div.card-body.p-4
+            div.d-flex.justify-content-between.align-items-center.mb-3
+              h6.card-title.fw-bold.text-white-50.mb-0 TYRE CLINIC REVENUE
+              i.fa-solid.fa-circle-notch.fs-3.text-white-50
+            h3.fw-bold UGX #{tyreRevenue.toLocaleString()}
+            p.small.mb-0 Total tyre services and sales today
+            
+      // Battery Section Revenue Card
+      div.col-md-4
+        div.card.shadow-sm.border-0.bg-warning.text-dark.rounded-4.h-100
+          div.card-body.p-4
+            div.d-flex.justify-content-between.align-items-center.mb-3
+              h6.card-title.fw-bold.text-dark-50.mb-0 BATTERY REVENUE
+              i.fa-solid.fa-car-battery.fs-3.text-dark-50
+            h3.fw-bold UGX #{batteryRevenue.toLocaleString()}
+            p.small.mb-0 Total battery hire and sales today
+
+    // Signed-Out Vehicles Table
+    div.card.shadow-sm.border-0.rounded-4
+      div.card-header.bg-white.py-3.border-bottom
+        h5.mb-0.fw-bold
+          i.fa-solid.fa-car-side.me-2.text-primary
+          | Signed-Out Vehicles for #{selectedDate}
+      
+      div.card-body.p-0
+        div.table-responsive
+          table.table.table-hover.table-striped.mb-0.align-middle
+            thead.table-light
+              tr
+                th.px-4 Receipt No.
+                th Receiver Name
+                th Vehicle Plate
+                th Sign-Out Time
+                th Amount Paid
+            
+            tbody
+              if signedOutVehicles && signedOutVehicles.length > 0
+                each record in signedOutVehicles
+                  tr
+                    td.px-4.fw-semibold.text-primary= record.receiptNumber
+                    td= record.receiverName
+                    td
+                      if record.vehicleId
+                        span.badge.bg-secondary= record.vehicleId.numberPlate
+                      else
+                        span.text-muted N/A
+                    td= new Date(record.signoutDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+                    td.fw-bold.text-success UGX #{record.amountPaid.toLocaleString()}
+              else
+                tr
+                  td.text-center.py-5.text-muted(colspan="5")
+                    i.fa-solid.fa-folder-open.fs-1.mb-3.d-block.text-light
+                    | No vehicles were signed out on this date.

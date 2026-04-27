@@ -1,0 +1,58 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Vehicle Registration - ParkEase
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css')
+  style.
+    body {
+    background-color: #f4f7f6;
+    }
+    /* Smooth transition for the NIN field */
+    #ninContainer {
+    transition: all 0.3s ease-in-out;
+    }
+.container.min-vh-100.d-flex.justify-content-center.align-items-center.py-5
+  .card.shadow-lg.border-0.rounded-4(style='width: 100%; max-width: 700px;')
+    .card-header.bg-primary.text-white.text-center.py-4.rounded-top-4
+      h3.mb-0
+        i.bi.bi-car-front-fill.me-2
+        | Vehicle Registration
+      p.mb-0.small.text-white-50 Update vehicles
+    .card-body.p-4.p-md-5
+      form#vehicleRegistrationForm(method='post' action=`/vehicles/update/${vehicle._id}`)
+        h5.text-primary.mb-3.border-bottom.pb-2 Driver Details
+        .row.mb-4
+          .col-md-6.mb-3.mb-md-0
+            label.form-label.fw-semibold(for='driverName') Driver Name
+            input#driverName.form-control(type='text' placeholder='e.g. John Doe' name='driverName' value=vehicle.driverName)
+          .col-md-6
+            label.form-label.fw-semibold(for='phoneNumber') Phone Number
+            input#phoneNumber.form-control(type='tel' placeholder='07XX XXXXXX' name='phoneNumber' value=vehicle.phoneNumber)
+        h5.text-primary.mb-3.border-bottom.pb-2 Vehicle Details
+        .row.mb-3
+          .col-md-6.mb-3.mb-md-0
+            label.form-label.fw-semibold(for='vehicleType') Vehicle Type
+            select#vehicleType.form-select(name='vehicleType')
+              option(value='' selected='' disabled='') Select type...
+              option(value='Truck' selected=vehicle.vehicleType === "Truck") Truck
+              option(value='Personal Car' selected=vehicle.vehicleType === "Personal Car") Personal Car
+              option(value='Taxi' selected=vehicle.vehicleType === "Taxi") Taxi
+              option(value='Coaster' selected=vehicle.vehicleType === "Coaster") Coaster
+              option(value='Boda-boda' selected=vehicle.vehicleType === "Boda-boda") Boda-boda
+          .col-md-6
+            label.form-label.fw-semibold(for='numberPlate') Number Plate
+            input#numberPlate.form-control(type='text' placeholder='e.g. UAB 123C' name='numberPlate' value=vehicle.numberPlate disabled)
+        .row.mb-3
+          .col-md-6
+            label.form-label.fw-semibold(for='vehicleColor') Vehicle Color
+            input#vehicleColor.form-control(type='text' placeholder='e.g. White' name='vehicleColor' value=vehicle.vehicleColor)
+          .col-md-6
+            label.form-label.fw-semibold(for='vehicleModel') Vehicle Model
+            input#vehicleModel.form-control(type='text' placeholder='e.g. Toyota Hilux' name='vehicleModel' value=vehicle.vehicleModel)
+        button.btn.btn-primary.w-100.py-2.fw-bold.rounded-3.mt-3(type='submit')
+          i.bi.bi-check-circle.me-2
+          | Update Vehicle
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')   
+script(src="/js/vehicleRegister.js") 

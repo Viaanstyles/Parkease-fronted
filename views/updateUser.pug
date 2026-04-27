@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    div.form-card(style="max-width:500px; margin:40px auto; padding:25px; border-radius:10px; background:#f9f9f9; box-shadow:0 4px 10px rgba(0,0,0,0.1);")
+        form(method='post' action=`/users/update/${user._id}`)
+            div.userDetails
+                h2(style="margin-bottom:10px; text-align:center;") Update User
+                p.underline(style="height:3px; background:#007BFF; width:60px; margin:0 auto 20px auto; border-radius:2px;")
+
+                div(style="margin-bottom:15px;")
+                    label(for='firstName' style="display:block; margin-bottom:5px; font-weight:bold;") First Name
+                    input(type='text' placeholder='James' name='firstName' value=user.firstName style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;")
+
+                div(style="margin-bottom:15px;")
+                    label(for='lastName' style="display:block; margin-bottom:5px; font-weight:bold;") Last Name
+                    input(type='text' placeholder='Kisakye' name='lastName' value=user.lastName style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;")
+
+                div(style="margin-bottom:15px;")
+                    label(for='email' style="display:block; margin-bottom:5px; font-weight:bold;") Email Address
+                    input(type='email' placeholder='name@gmail.com' name='email' value=user.email style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;")
+
+                div(style="margin-bottom:15px;")
+                    label(for='phone' style="display:block; margin-bottom:5px; font-weight:bold;") Phone Number
+                    input(type='tel' placeholder='+25670000000' name='phoneNumber' value=user.phoneNumber style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;")
+
+                div(style="margin-bottom:20px;")
+                    label(for='role' style="display:block; margin-bottom:5px; font-weight:bold;") Role
+                    select#role(name="role" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;")
+                        option(value="" selected='' disabled='') Select role 
+                        option(value="Admin" selected=user.role === "Admin") Admin 
+                        option(value="Manager" selected=user.role === "Manager") Manager 
+                        option(value="Attendant" selected=user.role === "Attendant") Attendant   
+
+            button.btn-submit(type='submit' style="width:100%; padding:10px; background:#007BFF; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;")
+                | Update User

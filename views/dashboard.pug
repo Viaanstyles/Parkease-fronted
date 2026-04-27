@@ -1,0 +1,80 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title ParkEase Dashboard
+  link(rel='stylesheet' href='css/styles.css')
+.nav-set
+  nav.navbar
+    .logo
+      | ParkEase
+    ul.nav-links
+      li
+        a.register-link(href='register.html') Register Vehicle
+      li
+        a(href='reports.html') Admin
+      li
+        a(href='batterySection.html') Battery Section
+      li
+        a(href='tyreClinic.html') Tyre Clinic
+      li
+        a.dashboard-link(href='dashboard.html') Dashboard
+      li
+        a(href='signOut.html') Check Out
+    .nav-right
+      span.user-role Admin
+      a.logout-btn(href='index.html') Logout
+  .dashboard-top
+    .search-wrapper
+      input.dashboard-search(type='text' placeholder='Search vehicle by number plate...')
+  .dashboard-container
+    // STAT CARDS
+    .stats
+      .card
+        h3 Parked Vehicles
+        p 24
+      .card
+        h3 Total Revenue
+        p UGX 450,000
+      .card
+        h3 Available Slots
+        p 16
+      .card
+        h3 Active Attendants
+        p 3
+    // QUICK ACTIONS
+    .quick-actions
+      a(href='register.html')
+        button.btn.btn-primary Register Vehicle
+      a(href='signOut.html')
+        button.btn.btn-outline Vehicle Sign Out
+    // TABLE
+    .table-container
+      table
+        thead
+          tr
+            th Vehicle Type
+            th Number Plate
+            th Time In
+            th Status
+            th Services
+        tbody
+          tr
+            td Car
+            td UBA 123A
+            td 08:45 AM
+            td.status-active Parked
+            td Car Wash
+          tr
+            td SUV
+            td UBK 782D
+            td 09:15 AM
+            td.status-active Parked
+            td Tyre Check
+          tr
+            td Boda Boda
+            td UED 334B
+            td 07:30 AM
+            td.status-out Signed Out
+            td None
+script(src='javaScript/dashboard.js')
